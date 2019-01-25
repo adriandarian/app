@@ -1,0 +1,46 @@
+<%- partial ('../partials/topbar.ejs') %>
+<section id="gitlist-top-abstand"></section>
+           <div class="wrapper wrapper-content animated fadeInUp"> <!--wrapper wrapper-content animated fadeInUp--> 
+                    <div class="ibox">
+                        <div class="ibox-title">
+                                <% if(username != "") { %>   
+                                <h5>All projects assigned to this account</h5>
+<!-- else happend when that thing show up when user is logged in or not --> <% } else { %>
+                                                            <div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/">Gitlist</a></li>
+    <li><a href="/g/trending">Trending</a></li>
+    <li><a href="/g/popular">Popular</a></li>
+    <li><a href="/g/recent">Recent</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="/g/add">+ Git</a></li>
+  </ul>
+</div>
+                                <% } %>
+                            <div class="ibox-tools">
+                                <a href="/g/add"  id="submit-git-link" class="btn btn-primary btn-xs">+Submit Git</a>
+                                <!--  <li><a href="/g/add" id="submit-git-link">+Submit Git</a></li>--> 
+                            </div>
+                        </div>
+                       <div class="ibox-content">
+                          <div class="row m-b-sm m-t-sm">
+                            </div> 
+
+
+<%- partial ('../partials/oauth-twitter-github.ejs') %>
+
+
+    <section id="gitlist-sectionspace3-weekly" class="pad-section">
+        <%- partial ('../partials/gitlist-list-weekly-front.ejs') %>  
+    </section>
+
+
+    <section id="gitlist-sectionspace-alerts" class="pad-section">
+        <%- partial ('../partials/advertising.ejs') %>  
+    </section>
+
+    </div> <!--end up wrapper wrapper-content animated fadeInUp
+				note for the homepage.ejs is in the homepage.ejs file --> 

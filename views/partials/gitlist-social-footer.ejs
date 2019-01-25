@@ -1,0 +1,67 @@
+   
+<!-- Adding here the footer links and social media icons etc. --> 
+
+              <li><a href="/" id="footer-gl-line"> Home</a></li>
+              <li> <a href="/g/launching" id="footer-gl-line"> Start Gitlist</a></li>
+              <li> <a href="/info/about" id="footer-gl-line"> About</a></li>
+              <li> <a href="https://gitlist.github.io/" id="footer-gl-line" target="_blank"> Blog</a></li>
+              <li> <a href="/info/terms" id="footer-gl-line"> Terms</a></li>
+              <li> <a href="/info/privacy" id="footer-gl-line"> Privacy</a></li>
+              <li> <a href="/info/contact" id="footer-gl-line"> Contact</a></li>
+              <li> <a href="https://facebook.com/gitlist" id="footer-gl-line-social-fotter" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              <li> <a href="https://github.com/gitlist" id="footer-gl-line-social-fotter" target="_blank"><i class="fa fa-github"></i></a></li>
+            <li> <a href="https://twitter.com/LucasGatsas" id="footer-gl-line-social-fotter" target="_blank"><i class="fa fa-twitter"></i></a></li> 
+             <br><br> 
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
+            <!--  <div class="container-fluid"> 
+              <h1>Hello World!</h1>
+              <p>Read More about Gitlist OS and New Updates.</p>
+              <div class="row">
+                <div class="col-sm-4">      
+                  <a href="https://medium.com/@lucasgatsas/gitlist-io-find-and-list-your-gits-around-the-globe-beta-version-1-0-1-457070d4c68e#.m1aoq5se6" target="_blank">
+                    <img src="../images/medium.png" id="gitlist-logo" style="width:100px;"></a>
+                </div>
+                <div class="col-sm-4">      
+                  <a href="https://hn.algolia.com/?query=More%20Page%20Speed%20%20Gitlist.io%20%E2%80%93%20Get%20Daily%20Best%20Git%27s%20and%20Repo%20Around%20the%20Globe&sort=byDate&dateRange=all&type=story&storyText=false&prefix&page=0" target="_blank">
+                    <img src="../images/hn-search.png" id="gitlist-logo" style="width:130px;"></a>
+                </div>
+                <div class="col-sm-4">      
+                  <a href="https://news.ycombinator.com/item?id=10496670" target="_blank">
+                    <img src="../images/hackernews.png" id="gitlist-logo" style="width:100px;"></a>
+                </div>
+              </div>--> 
+            <!-- <h1 class="mb-25 sm-mb-20 heading scaled color-dark heading-bordered bordered-above">Download the Source</h1>
+                <h2 class="text-center w-300 color-dark mb-70 sm-mb-40 xs-mb-20">@ Github</h2><br>  -->
+               <!-- <a href="https://github.com/SpaceG/gitlist.io" class="btn btn-success  green center-block"> Gitlist Source Code<i class="fa fa-download" style="margin-left:10px;"></i></a>-->
+                <br><br> 
+                 <p class="text-muted"> 
+            <code id="gitlist-counter-footer">
+              <strong id="gitlist-counter-color-footer">3<span id="userNum"></span> Users @ gitlist</strong> 
+             <!-- <strong id="gitlist-counter-color-footer"><span id="gitNum"></span> Gits @ gitlist</strong>  -->
+            </code>   
+        <br> SignUp Today @ Gitlist! 
+    </p>
+ <p class="gitlist-sign-up-in-copyright-footer"> ©. Copyright <%= new Date().getFullYear() %> by Gitlist. all rights reserved. <br> Gitlist Version.1.0.2 </p>
+
+
+<script type="text/javascript">
+  $.post(
+    '/getUsers',
+    {},
+    function (res) {  
+      $("#userNum").text(res);
+      }
+    );
+</script>  
+
+<!--
+<script type="text/javascript">
+  $.post(
+    '/getPosts',
+    {},
+    function (res) {  
+      $("#gitNum").text(res);
+      }
+    );
+</script>   -->
+            </div>

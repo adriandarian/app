@@ -1,0 +1,173 @@
+<%- partial ('../partials/topbar.ejs') %>
+
+ <section id="gitlist-top-abstand"></section>
+
+
+      <style type="text/css">
+
+
+      .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    color: #fff;
+    /* background-color: #337ab7; */
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: #555;
+    cursor: default;
+    background-color: rgb(66, 127, 237);
+    border: 1px solid rgb(66, 127, 237);
+    border-bottom-color: transparent;
+}
+.nav-tabs > li a {
+    width: 70px;
+    height: 0px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    color: #fff;
+    background-color: rgb(66, 127, 237);
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav-pills>li>a {
+    border-radius: 4px;
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+    .nav-tabs-dropdown {
+  display: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.nav-tabs-dropdown:before {
+  content: "\e114";
+  font-family: 'Glyphicons Halflings';
+  position: absolute;
+  right: 30px;
+}
+
+@media screen and (min-width: 769px) {
+  #nav-tabs-wrapper {
+    display: block!important;
+  }
+}
+@media screen and (max-width: 768px) {
+    .nav-tabs-dropdown {
+        display: block;
+    }
+    #nav-tabs-wrapper {
+        display: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        text-align: center;
+    }
+   .nav-tabs-horizontal {
+        min-height: 20px;
+        padding: 19px;
+        margin-bottom: 20px;
+        background-color: #f5f5f5;
+        border: 1px solid #e3e3e3;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+   }
+    .nav-tabs-horizontal  > li {
+        float: none;
+    }
+    .nav-tabs-horizontal  > li + li {
+        margin-left: 2px;
+    }
+    .nav-tabs-horizontal > li,
+    .nav-tabs-horizontal > li > a {
+        background: transparent;
+        width: 100%;
+    } 
+    .nav-tabs-horizontal  > li > a {
+        border-radius: 4px;
+    }
+    .nav-tabs-horizontal  > li.active > a,
+    .nav-tabs-horizontal  > li.active > a:hover,
+    .nav-tabs-horizontal  > li.active > a:focus {
+        color: #ffffff;
+        background-color: #428bca;
+    }
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+
+color: #ffffff;
+        background-color: #325aa2;
+
+
+}
+    </style>
+
+<br><br> 
+
+  <div class="container small">
+    <h2>Gitlist <small>Friendly Question Ask</small></h2>
+    <p class="lead"> </p>
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="#" class="nav-tabs-dropdown btn btn-block btn-primary">Tabs</a>
+            <ul id="tabs" class="nav nav-pills"   data-tabs="tabs">
+              <li class="active"><a href="#vtab1" data-toggle="tab">What is Gitlist?</a></li>
+            <!--  <li><a href="#vtab2" data-toggle="tab">How works Gitlist?</a></li>
+              <li><a href="#vtab3" data-toggle="tab">Is Gitlist for Free?</a></li> --> 
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="vtab1">
+                    <h3>What is Gitlist?</h3>
+                    <p>Gitlist is a OpenSource Project. Current Version is 1.0.2 ! The Full Source Code is available on Github. Please feel free to work in the Gitlist OS Community.</p>
+                </div>
+              <!--     <div role="tabpanel" class="tab-pane fade" id="vtab2">
+                    <h3>How works Gitlist?</h3>
+                    <p> Gitlist is very simple to use it. Sign Up with your e-mail and set a paswort, and begin to add Gits here <br><a href="http://www.gitlist.io/g/add"> + Submit Git</a>  </p>
+                </div>
+             <div role="tabpanel" class="tab-pane fade in" id="vtab3">
+                    <h3>Is Gitlist for Free?</h3>
+                    <p>Gitlist is for Free! And made for all Web Developers and It People!  Yes, developed by <a href="https://twitter.com/lucasgatsas" target="_blank">Lucas Gatsas</a> on 1. of January 2015 in Switzerland.  </p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+   
+        </div>
+    </div>
+</div>
+  <script type="text/javascript">
+  $('.nav-tabs-dropdown').each(function(i, elm) {
+    
+    $(elm).text($(elm).next('ul').find('li.active a').text());
+    
+});
+  
+$('.nav-tabs-dropdown').on('click', function(e) {
+
+    e.preventDefault();
+    
+    $(e.target).toggleClass('open').next('ul').slideToggle();
+    
+});
+
+$('#nav-tabs-wrapper a[data-toggle="tab"]').on('click', function(e) {
+
+    e.preventDefault();
+    
+    $(e.target).closest('ul').hide().prev('a').removeClass('open').text($(this).text());
+      
+});
+  </script>
+

@@ -1,0 +1,273 @@
+<style type="text/css">
+    body {
+      background: #F2F2F2;
+    }
+
+    /* Profile container */
+    .profile {
+      margin: 20px 0;
+    }
+
+    /* Profile sidebar */
+    .profile-sidebar {
+      padding: 20px 0 10px 0;
+      background: #fff;
+    }
+
+    .profile-userpic img {
+      float: none;
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      background: gray;
+      -webkit-border-radius: 50% !important;
+      -moz-border-radius: 50% !important;
+      border-radius: 50% !important;
+    }
+
+    .profile-usertitle {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .profile-usertitle-name {
+      color: #5a7391;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .profile-usertitle-job {
+      text-transform: uppercase;
+      color: #5b9bd1;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .profile-userbuttons {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .profile-userbuttons .btn {
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 15px;
+      margin-right: 5px;
+    }
+
+    .profile-userbuttons .btn:last-child {
+      margin-right: 0px;
+    }
+        
+    .profile-usermenu {
+      margin-top: 30px;
+    }
+
+    .profile-usermenu ul li {
+      border-bottom: 1px solid #f0f4f7;
+    }
+
+    .profile-usermenu ul li:last-child {
+      border-bottom: none;
+    }
+
+    .profile-usermenu ul li a {
+      color: #93a3b5;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .profile-usermenu ul li a i {
+      margin-right: 8px;
+      font-size: 14px;
+    }
+
+    .profile-usermenu ul li a:hover {
+      background-color: #fafcfd;
+      color: #5b9bd1;
+    }
+
+    .profile-usermenu ul li.active {
+      border-bottom: none;
+    }
+
+    .profile-usermenu ul li.active a {
+      color: #5b9bd1;
+      background-color: #f6f9fb;
+      border-left: 2px solid #5b9bd1;
+      margin-left: -2px;
+    }
+
+    /* Profile Content */
+    .profile-content {
+      padding: 20px;
+      background: #fff;
+      min-height: 460px;
+    }
+
+    button.btn.btn-primary-blue.btn-sm {
+      color: #fff;
+      background-color: #4183c4;
+      border-color: #4183c4;
+    }
+
+    /* Adding the form for password forgot */
+    .form-password-change {
+
+      padding: 15px;
+      margin: 0 auto;
+    }
+
+    input#gl-pass-1 {
+      max-width: 300px;
+    }    
+</style>
+</head>
+
+<body>
+    <%- partial ('../partials/topbar-without-menu.ejs') %>
+    <section id="gitlist-top-abstand"></section>
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <% if(username != "") { %>
+                             <div class="profile-userpic">
+                            <img id="userpic" src="<%- picture%>" class="img-responsive" alt="">                        
+                        </div>
+         
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name"><%- username%></div>
+                        </div>
+               
+                        <input type="hidden" id="useremail" value="<%- email%>" >
+                    <% }else{ %>
+            
+                        <div class="profile-userpic">
+                            <img id="userpic" src="/images/user-1.png" class="img-responsive" alt="">                        
+                        </div>
+                 
+                        <div class="profile-usertitle">
+                            <div class="profile-usertitle-name"></div>
+                        </div>
+                        <input type="hidden" id="useremail" value="" >
+                    <% } %>
+                    <div class="profile-userbuttons">
+               
+                    </div>
+         
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li>
+                                <a href="/g/settings">
+                                Account Settings </a>
+                            </li>
+                            <li>
+                                <a href="/g/account">
+                                Password </a>
+                            </li>
+                  
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="profile-content">
+                    <h2>Change Password</h2><br>
+                    <div class="reset-password-form" id="password-reset">
+                        <% if(username != "") { %>
+                            <p> Current Password </p>
+                            <input name="password" type="password" class="form-control login-input" placeholder="Password" id="gl-pass-1"><br>
+                            <p><a href="/g/forgot">Forgot your password?</a> </p><br>
+                            <p>  New Password </p>
+                            <input name="password" id="newPassword" type="password" class="form-control login-input" placeholder="Password" id="gl-pass-1"><br>
+                            <p>Confirm Password</p>
+                            <input name="passwordConfirmation" id="newConfirmPassword" class="form-control login-input-pass" placeholder="Confirm Password" type="password" id="gl-pass-1"><br>
+                            <input type="text" name="fakeinput" value="" class="hidden">
+                            <button type="submit" class="change-password-button btn btn-primary-blue btn-sm"  value="">Change</button>
+                        <% }else {%>
+                            <p> Current Password </p>
+                            <input name="password" type="password" class="form-control login-input" placeholder="Password" id="gl-pass-1" disabled><br>
+                            <p><a href="/forgot">Forgot your password?</a> </p><br>
+                            <p>  New Password </p>
+                            <input name="password" id="newPassword" type="password" class="form-control login-input" placeholder="Password" id="gl-pass-1" disabled><br>
+                            <p>Confirm Password</p>
+                            <input name="passwordConfirmation" id="newConfirmPassword" class="form-control login-input-pass" placeholder="Confirm Password" type="password" id="gl-pass-1" disabled><br>
+                            <input type="text" name="fakeinput" value="" class="hidden" disabled>
+                            <button type="submit" class="change-password-button btn btn-primary-blue btn-sm"  value="" disabled>Change</button>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.notify.addStyle('confirm', {
+          html: "<div><span data-notify-text/><span>&nbsp;&nbsp;Please click <a href='/g/login'>here</a> to login!</span></div>",
+        });
+
+        var useremail = $("#useremail").val();
+        //-- Check User logged in -- 
+        $.post(
+            '/login',
+            {},
+            function (res) {
+                if(!res.user){
+                    $.notify("You must login or signup before change password!", {style: 'confirm', className: "success", autoHide: false, clickToHide: false});
+                }
+            }
+        ).fail(function(res){
+            $.notify("Error!", "error");
+        });
+
+        // Change Password
+        $(".change-password-button").click(function(){
+            var newpassword = $("#newPassword").val();
+            var newconfirmpassword = $("#newConfirmPassword").val();
+            if (newpassword && newconfirmpassword) {
+                if (newpassword === newconfirmpassword) {
+                    $.post(
+                        '/password',
+                        {email: useremail, password: newpassword},
+                        function () {
+                          $.notify("Password Updated!", "success");
+//                          window.location = "/g/account";
+                        }
+                    ).fail(function(res){
+                        $.notify("Error!", "error");
+                    });        
+                }else{
+                    $.notify("New Passwords don't match", "error")
+                }
+            } else {
+                $.notify("New Password is required.", "error")
+            }
+        });
+    })
+</script>
+
+<style>
+    .notifyjs-confirm-base {
+        font-weight: bold;
+        padding: 8px 15px 8px 14px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        background-color: #fcf8e3;
+        border: 1px solid #fbeed5;
+        border-radius: 4px;
+        white-space: nowrap;
+        padding-left: 25px;
+        background-repeat: no-repeat;
+        background-position: 3px 7px;
+    }
+    .notifyjs-confirm-success {
+        color: #468847;
+        background-color: #DFF0D8;
+        border-color: #D6E9C6;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+    }
+</style>

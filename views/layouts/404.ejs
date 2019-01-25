@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+
+
+       444444444       000000000            444444444
+      4::::::::4     00:::::::::00         4::::::::4
+     4:::::::::4   00:::::::::::::00      4:::::::::4
+    4::::44::::4  0:::::::000:::::::0    4::::44::::4
+   4::::4 4::::4  0::::::0   0::::::0   4::::4 4::::4
+  4::::4  4::::4  0:::::0     0:::::0  4::::4  4::::4
+ 4::::4   4::::4  0:::::0     0:::::0 4::::4   4::::4
+4::::444444::::4440:::::0 000 0:::::04::::444444::::444
+4::::::::::::::::40:::::0 000 0:::::04::::::::::::::::4
+4444444444:::::4440:::::0     0:::::04444444444:::::444
+          4::::4  0:::::0     0:::::0          4::::4
+          4::::4  0::::::0   0::::::0          4::::4
+          4::::4  0:::::::000:::::::0          4::::4
+        44::::::44 00:::::::::::::00         44::::::44
+        4::::::::4   00:::::::::00           4::::::::4
+        4444444444     000000000             4444444444
+
+
+
+  This is the default "404: Not Found" page.
+  User agents that don't "Accept" HTML will see a JSON version instead.
+  You can customize the control logic for your needs in `config/404.js`
+
+  Sails considers a request to be in a "404: Not Found" state when a user
+  requests a URL which doesn't match any of your app's routes or blueprints.
+
+  You can also trigger this response from one of your controllers or policies with:
+  `return res.notFound();`
+
+
+-->
+<html>
+  <head>
+    <title>Page Not Found</title>
+         <title>Gitlist Error</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+            <link href="assets/css/bootstrap.min.css-gitlist-6347216-main.css" rel="stylesheet"type="text/css">
+       <link href="assets/css/style-gitlist-front.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+.error-template {padding: 230px 15px;text-align: center;}
+.error-template h1 {font-size: 50px;font-weight:600;color:black;}
+.error-actions {margin-top:15px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }
+
+span.glyphicon.glyphicon-home {
+  color: white;
+}
+.error-details {
+  color: rgba(255, 255, 255, 0.73);
+}
+h2 {
+  color: rgba(255, 255, 255, 0.45);
+}
+    </style>
+  </head>
+  <body style="  background-image: url(http://media.giphy.com/media/fQZX2aoRC1Tqw/giphy.gif);
+  background-size: cover;">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+              <img src="../images/white_icon_gitlist.png" style="height:46px;width:46px;margin-top: -6px;" class="" alt="avatar">
+            <!--    <h1>
+                    Oops!</h1> -->
+                <h2>
+                    404 - Git Not Found</h2>
+                <div class="error-details">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary btn-lg" id="color-blue"><i class="fa fa-home"></i>  Gitlist </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </body>
+</html>

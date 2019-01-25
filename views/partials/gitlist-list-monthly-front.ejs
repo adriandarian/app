@@ -1,0 +1,260 @@
+<div class="container small" id="gitlist-container">
+    <div class="row">
+        <div class="col-sm-12">
+           <!-- <h3>Monthly Gits</h3> --> 
+            <div id="gitlist-monthly">
+            </div>
+                       <div class="ibox">
+                            <div class="ibox-title">
+                               <h5>All Gits</h5>
+                            <div class="ibox-tools">
+                                <a href="/g/add"  id="submit-git-link" class="btn btn-primary btn-xs">+Submit Git</a>
+                            </div>
+                        </div>
+                       <div class="ibox-content">
+                            <div class="row m-b-sm m-t-sm">
+                                <div class="col-md-1">
+                                    <button type="button" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh"></i><a href="#"> Refresh</a></button>
+                                </div>
+              <!--    <div class="col-md-11">
+                      <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                      <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                </div> --> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+      var oneDay = 24*60*60*1000;
+      var oneHour = 60*60*1000;
+      var oneMinute = 60*1000;
+      var git_list = "";
+
+      $.post(
+          '/getGits',
+          {},
+          function (res) {     
+            for(var i = 0; i < res.length; i++){
+              var mydate = new Date(res[i].createdAt);
+              var diffDays = Math.round(Math.abs((today.getTime() - mydate.getTime())/(oneDay)));
+              var diffHours = Math.round(Math.abs((today.getTime() - mydate.getTime())/(oneHour)));
+              var diffMins = Math.round(Math.abs((today.getTime() - mydate.getTime())/(oneMinute)));
+              var diff = '';
+              
+              if(diffDays != 0)
+                diff = diffDays + " days ago";
+              else if(diffHours != 0)
+                diff = diffHours + " hours ago";
+              else
+                diff = diffMins + " minutes ago";
+
+              var year = res[i].createdAt.substring(0, 4);
+              var month = res[i].createdAt.substring(5, 7);
+              var date = res[i].createdAt.substring(8, 10);
+              var username = res[i].author.username;
+              var slug = username.replace(/\s+/g,'-').toLowerCase();
+              var hashtags = res[i].hashtags;
+              var tagsAry = hashtags.split(",");    
+              var email = res[i].author.email;
+              var picture = res[i].author.picture;
+              var comment_count = res[i].comments.length;
+              var vote_count = 0;
+
+              if(!res[i].votes)
+                  vote_count = 0;
+              else{
+                  vote_count = res[i].votes;
+              }
+
+               {
+
+              //if(year == yyyy){  if(year == yyyy && month == mm){
+                  // List Frame : Beginnings Here 
+                  git_list += "<div class='gitlist-media project-list' data-liststory='liststory_' id='"+res[i].id+"'>";
+                  git_list += "<table class='gitlist-center table table-hover'>";
+                  git_list += "<tbody>";
+                  git_list += "<tr>";
+
+                  // Git Status Project Status 
+
+                  //git_list += "<td class='gitlistvote_buttons project-status'>";
+                  //git_list += "<a><i class='fa fa-sort-asc'></i><br><span class='votes vote_count label label-primary'>"+vote_count+"</span></a>";
+                  //git_list += "</td>";
+
+
+                  git_list += "<td class='project-status'>";
+                  git_list +=  "<span class='label label-primary'>Active</span>";
+                  git_list += "</td>";
+
+
+                  git_list += "</div>";
+             
+                  // Gitlist Body of the Monthly Section
+
+                  git_list += "<div class='gitlistmedia-body'>";
+
+
+                  // Git Project Title 
+
+                  git_list += "<td class='gitlistmedia-heading project-title'>";
+                  git_list += "<a class='git-title' href='/git/"+ res[i].slug +"'>"+res[i].title+"</a>";
+
+                  // Git Sub Detail Like Date, Name etc. 
+
+                  git_list += "<div class='sub-detail'>";
+                  git_list += "<small class='timestamp'> created: "+diff+" by </small>";
+
+                  git_list += "<span class='verify_badge' data-placement='bottom' data-toggle='tooltip' title='' data-original-title='Verified Traveler'><i class='icon-ok-sign'></i></span> ";
+
+                  git_list += "<a class='owner' href='/"+slug+"'>"+username+"</a>";
+
+                  //git_list += "<a class='owner' id='gitlist-front-readmore' href='/git/"+ res[i].slug +"'> <i class='fa fa-search-plus'></i> Read More</a>";
+
+                  //git_list += "<a class='mail' id='gitlist-front-readmore' href='mailto:?subject=get%20daily%20best%20Gits%20around%20the%20world%20www.%20are&amp;body=http%3A%2F%2Fgitlist.io/git/"+ res[i].slug +"'><i class='fa fa-envelope-o'></i><span> Send Mail </span></a>";
+                  
+
+                  //git_list += "<span class='tags'>";
+                  //for(var j = 0; j < tagsAry.length; j++){
+                    //var hash_first = tagsAry[j].replace(/\s+/g, '').substr(0,1);                    
+                    //if(hash_first == "#"){
+                      //git_list += "<a href='/"+tagsAry[j].replace(/\s+/g, '')+"'>"+tagsAry[j].replace(/\s+/g, '')+"</a>";
+                    //}
+                    //else{
+                      //git_list += "<a href='/#"+tagsAry[j].replace(/\s+/g, '')+"'>#"+tagsAry[j].replace(/\s+/g, '')+"</a>";
+                    //}
+                  //}
+
+                  //git_list += "</span>";
+                  git_list += "</div>";
+
+
+                  // Git Title inclusive Link to the Link ? 
+
+                  //git_list += "<a class='lang' data-toggle='tooltip' href='#' title='' data-original-title='Language'>en</a>";
+                  //git_list += "<a class='gitdomain' href='#'>gitlist.io</a>";
+                  git_list += "</td>";
+
+
+
+                  // Git Status maybe from the Git ? Completion ???
+
+
+                      // Project Actions Buttons
+
+                        git_list += "<td class='gitlist project-completion'>";
+                        git_list += "<small>Completion with: 48%</small'>";
+                  git_list += "<div class='progress progress-mini'>";
+                  git_list += "<div style='width: 48%;' class='progress-bar'>";
+
+
+                        git_list += "</div>";
+                        git_list += "</div>";
+                        git_list += "</td>";
+
+
+
+                  // Profile Images 
+
+                  git_list += "<td class='gitlist-image project-people'>";
+                  git_list += "<a class='' href='/"+slug+"'>";
+                  git_list += "<img alt='images-profile' class='img-circle' src='"+ picture +"'>";
+                  git_list += "</a>";
+                  git_list += "</td>";
+
+
+                  git_list += "</div>";
+
+                  // Right Options Comming Soon 
+
+                  //git_list += "<div class='right-options'>";
+                  //git_list += "<div class='buttons dropdown'>";
+                  //git_list += "<a class='twitter' data-remote='true' href='https://twitter.com/intent/tweet?text=http://www.gitlist.io/git/"+ res[i].slug +"' target='_blank'><i class='fa fa-twitter'></i> <span>tweet</span></a>";
+
+                  //git_list += "<a class='comment-count loading' data-remote='true' href='/git/"+ res[i].slug +"'><i class='fa fa-comments'></i> <span>"+comment_count+"</span></a>";
+
+
+                  // Project Actions Buttons
+
+                        git_list += "<td class='project-actions'>";
+                        //count of the comments 
+                        git_list += "<a class='btn btn-white btn-sm' data-remote='true' href='/git/"+ res[i].slug +"'><i class='fa fa-folder'></i> <span>"+comment_count+"</span></a>";
+                        git_list += "<a class='btn btn-white btn-sm'><i class='fa fa-pencil'></i> Edit </a>";
+                        git_list += "</td>";
+
+                  git_list += "</tr>";
+                  git_list += "</tbody>";
+                  git_list += "</table>";
+                  git_list += "</div>";
+              }             
+            }
+
+          $("#gitlist-monthly").html(git_list);
+          
+          $("#gitlist-monthly .gitlistvote_buttons").click(function(){
+              var id = $(this).closest(".gitlist-media  project-list").attr('id');
+              var thisObj = $(this);
+
+              $.ajax({
+                  url: '/addVote',
+                  type: 'POST',
+                  data: {postId: id},
+                  async: false,   
+                  success: function(res){
+                      var vote_count = res.votes;
+                      $(thisObj).find(".vote_count").text(vote_count);                        
+                      $("#gitlist-daily #"+id).find(".vote_count").text(vote_count);
+                      $("#gitlist-weekly #"+id).find(".vote_count").text(vote_count);
+                  }
+              });
+          });
+        }
+      ).fail(function(res){
+          $.notify("Error!", "error");      
+      });            
+    });
+</script>
+
+
+<style>
+a.twitter {
+     background: #FFFFFF;
+    font-size: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #427fed;
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-left: 2px;
+    margin-right: 5px;
+    border: 2px solid #427fed;
+}
+@media (max-width: 700px) {
+a.twitter {
+    display:none;
+}
+}
+@media (max-width: 1200px) {
+.gitlist-media .gitlist-center .right-options .buttons {
+    text-align: right;
+}
+}
+</style>
+
+<!--
+<a class="facebook" href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;"><span class="icon-facebook-rect"> Share</span>
+</a>-->

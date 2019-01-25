@@ -1,0 +1,212 @@
+<script src="/js/notify.js"></script>
+
+<style>
+/* iCheck plugin Square skin, green
+----------------------------------- */
+.icheckbox_square-green,
+.iradio_square-green {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url("green.png") no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.icheckbox_square-green {
+    background-position: 0 0;
+}
+.icheckbox_square-green.hover {
+    background-position: -24px 0;
+}
+.icheckbox_square-green.checked {
+    background-position: -48px 0;
+}
+.icheckbox_square-green.disabled {
+    background-position: -72px 0;
+    cursor: default;
+}
+.icheckbox_square-green.checked.disabled {
+    background-position: -96px 0;
+}
+
+.iradio_square-green {
+    background-position: -120px 0;
+}
+.iradio_square-green.hover {
+    background-position: -144px 0;
+}
+.iradio_square-green.checked {
+    background-position: -168px 0;
+}
+.iradio_square-green.disabled {
+    background-position: -192px 0;
+    cursor: default;
+}
+.iradio_square-green.checked.disabled {
+    background-position: -216px 0;
+}
+
+/* HiDPI support */
+@media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+    .icheckbox_square-green,
+    .iradio_square-green {
+        background-image: url("green@2x.png");
+        -webkit-background-size: 240px 24px;
+        background-size: 240px 24px;
+    }
+}
+</style>
+
+
+    <div class="middle-box text-center loginscreen   animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">gl+</h1>
+            </div>
+            <h3>Register to gl+</h3>
+            <p>Create account to see it in action.</p>
+            <div class="m-t" role="form" action="login.html">
+                <input type="text" name="username" id="signupName" class="form-control login-input" placeholder="Username" required="" autofocus="">
+                <br>
+                <input type="email" name="email" id="signupEmail" class="form-control login-input" placeholder="E-mail">
+                <br>
+                <input name="password" type="password" id="signupPwd" class="form-control login-input" placeholder="Password">
+                <br>
+                <input name="passwordConfirmation" id="signupConfirmPwd" class="form-control login-input-pass" placeholder="Confirm Password" type="password">
+                <br>
+                <input id="fakeinput" type="text" name="fakeinput" value="" class="hidden">  
+                <br>
+                <label class="checkbox">
+                  <input id="terms" name="terms" type="checkbox" value="1" checked> I agree with the terms of service.
+                </label>
+                <button class="signupBtn btn btn-primary block full-width m-b">Register</button>
+                <p class="text-muted text-center"><small>Already have an account?</small></p>
+                 <a class="btn btn-sm btn-white btn-block" id="color-blue" href="/g/login"><i class="fa fa-check-circle-o"></i> Login In</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<script type="text/javascript">
+ 
+
+  $.notify.addStyle('confirm', {
+    html: "<div><span data-notify-text/><span>&nbsp;&nbsp;Please click <a href='/g/login'>here</a> to login!</span></div>",
+  });
+
+  // Enter key press
+  $("#signupConfirmPwd").keyup(function(e){
+      if(e.which == 13){
+          var email = $("#signupEmail").val();
+          var username = $("#signupName").val();
+          var password = $("#signupPwd").val();
+          var confirmPassword = $("#signupConfirmPwd").val();
+          var fakeinput = $("#fakeinput").val();
+          var terms = $("#terms").val();
+          if (email && username && password) {
+              if (password === confirmPassword) {
+                  $.post(
+                      '/g/signup',
+                      {email: email, username: username, password:password, passwordConfirmation:confirmPassword, fakeinput: fakeinput, terms: terms},
+                      function () {                
+                          $.notify(username + " has created an account successfully!", {style: 'confirm', className: "success", autoHide: false, clickToHide: false});
+                      }
+                  ).fail(function(res){
+                      $.notify("Error!", "error");
+                  });
+              } else {
+                  $.notify("Passwords don't match", "error");
+              }   
+          } else {
+              $.notify("A username and password is required!", "error");
+          }
+      }
+  });
+
+  // Signup button click
+  $(".signupBtn").click(function(){
+    var email = $("#signupEmail").val();
+    var username = $("#signupName").val();
+    var password = $("#signupPwd").val();
+    var confirmPassword = $("#signupConfirmPwd").val();
+    var fakeinput = $("#fakeinput").val();
+    var terms = $("#terms").val();
+    if (email && username && password) {
+        if (password === confirmPassword) {
+            $.post(
+                '/g/signup',
+                {email: email, username: username, password:password, passwordConfirmation:confirmPassword, fakeinput: fakeinput, terms: terms},
+                function () {                
+                    $.notify(username + " has created an account successfully!", {style: 'confirm', className: "success", autoHide: false, clickToHide: false});
+                }
+            ).fail(function(res){
+                $.notify("Error!", "error");
+            });
+        } else {
+            $.notify("Passwords don't match", "error");
+        }   
+    } else {
+        $.notify("A username and password is required!", "error");
+    }
+  });  
+</script>
+<style>
+    .notifyjs-confirm-base {
+        font-weight: bold;
+        padding: 8px 15px 8px 14px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        background-color: #fcf8e3;
+        border: 1px solid #fbeed5;
+        border-radius: 4px;
+        white-space: nowrap;
+        padding-left: 25px;
+        background-repeat: no-repeat;
+        background-position: 3px 7px;
+    }
+    .notifyjs-confirm-success {
+        color: #468847;
+        background-color: #DFF0D8;
+        border-color: #D6E9C6;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+    }
+</style>
+
+<script>
+ if ($.browser.webkit) {
+    $('input[name="password"]').attr('autocomplete', 'off');
+}
+</script>
+
+
+
+<script>
+if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0) {
+  $(window).load(function(){
+    $('input:-webkit-autofill').each(function(){
+      var text = $(this).val();
+      var name = $(this).attr('name');
+      $(this).after(this.outerHTML).remove();
+      $('input[name=' + name + ']').val(text);
+    });
+  });
+}
+</script>
+
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
