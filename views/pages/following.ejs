@@ -1,0 +1,740 @@
+  <style type="text/css">
+    
+
+.card {
+    padding-top: 20px;
+    margin: 10px 0 20px 0;
+    background-color: rgba(214, 224, 226, 0.2);
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card .card-heading {
+    padding: 0 20px;
+    margin: 0;
+}
+
+.card .card-heading.simple {
+    font-size: 20px;
+    font-weight: 300;
+    color: #777;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.card .card-heading.image img {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    margin-right: 15px;
+    vertical-align: top;
+    border: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.card .card-heading.image .card-heading-header {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card .card-heading.image .card-heading-header h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+    color: #262626;
+}
+
+.card .card-heading.image .card-heading-header span {
+    font-size: 12px;
+    color: #999999;
+}
+
+.card .card-body {
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.card .card-media {
+    padding: 0 20px;
+    margin: 0 -14px;
+}
+
+.card .card-media img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card .card-actions {
+    min-height: 30px;
+    padding: 0 20px 20px 20px;
+    margin: 20px 0 0 0;
+}
+
+.card .card-comments {
+    padding: 20px;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+.card .card-comments .comments-collapse-toggle {
+    padding: 0;
+    margin: 0 20px 12px 20px;
+}
+
+.card .card-comments .comments-collapse-toggle a,
+.card .card-comments .comments-collapse-toggle span {
+    padding-right: 5px;
+    overflow: hidden;
+    font-size: 12px;
+    color: #999;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-comments .media-heading {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.card.people {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 300px;
+    padding-top: 0;
+    margin-left: 20px;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.card.people:first-child {
+    margin-left: 0;
+}
+
+.card.people .card-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 170px;
+    height: 150px;
+    background-color: #ffffff;
+}
+
+.card.people .card-top.green {
+    background-color: #53a93f;
+}
+
+.card.people .card-top.blue {
+    background-color: #427fed;
+}
+
+.card.people .card-info {
+    position: absolute;
+    top: 150px;
+    display: inline-block;
+    width: 100%;
+    height: 101px;
+    overflow: hidden;
+    background: #ffffff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card.people .card-info .title {
+    display: block;
+    margin: 8px 14px 0 14px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #404040;
+}
+
+.card.people .card-info .desc {
+    display: block;
+    margin: 8px 14px 0 14px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.card.people .card-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    line-height: 29px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(214, 224, 226, 0.2);
+}
+
+.card.hovercard .cardheader {
+    background: white;
+    background-size: cover;
+    height: 135px;
+}
+
+.card.hovercard .avatar {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+}
+
+.card.hovercard .avatar img {
+       /* width: 100px; */
+    /* height: 100px; */
+    max-width: 100px;
+    max-height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.5);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+.card.hovercard .info {
+    padding: 4px 8px 10px;
+}
+
+.card.hovercard .info .title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+}
+
+.card.hovercard .info .desc {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.card.hovercard .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+.btn-warning {
+    color: #fff;
+    background-color: rgb(47, 90, 167);
+    border-color: rgb(47, 90, 167);
+}.btn-warning:hover, .btn-warning:focus, .btn-warning.focus, .btn-warning:active, .btn-warning.active, .open>.dropdown-toggle.btn-warning {
+    color: #fff;
+    background-color: rgb(66, 127, 237);
+    border-color: rgb(66, 127, 237);
+}
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: 100;
+    line-height: 1.0;
+    color: rgba(0, 0, 0, 0.81);
+}
+    </style>
+   <style type="text/css">
+    
+
+.card {
+    padding-top: 20px;
+    margin: 10px 0 20px 0;
+    background-color: rgba(214, 224, 226, 0.2);
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card .card-heading {
+    padding: 0 20px;
+    margin: 0;
+}
+
+.card .card-heading.simple {
+    font-size: 20px;
+    font-weight: 300;
+    color: #777;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.card .card-heading.image img {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    margin-right: 15px;
+    vertical-align: top;
+    border: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.card .card-heading.image .card-heading-header {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card .card-heading.image .card-heading-header h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+    color: #262626;
+}
+
+.card .card-heading.image .card-heading-header span {
+    font-size: 12px;
+    color: #999999;
+}
+
+.card .card-body {
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.card .card-media {
+    padding: 0 20px;
+    margin: 0 -14px;
+}
+
+.card .card-media img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card .card-actions {
+    min-height: 30px;
+    padding: 0 20px 20px 20px;
+    margin: 20px 0 0 0;
+}
+
+.card .card-comments {
+    padding: 20px;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+.card .card-comments .comments-collapse-toggle {
+    padding: 0;
+    margin: 0 20px 12px 20px;
+}
+
+.card .card-comments .comments-collapse-toggle a,
+.card .card-comments .comments-collapse-toggle span {
+    padding-right: 5px;
+    overflow: hidden;
+    font-size: 12px;
+    color: #999;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-comments .media-heading {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.card.people {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 300px;
+    padding-top: 0;
+    margin-left: 20px;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.card.people:first-child {
+    margin-left: 0;
+}
+
+.card.people .card-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 170px;
+    height: 150px;
+    background-color: #ffffff;
+}
+
+.card.people .card-top.green {
+    background-color: #53a93f;
+}
+
+.card.people .card-top.blue {
+    background-color: #427fed;
+}
+
+.card.people .card-info {
+    position: absolute;
+    top: 150px;
+    display: inline-block;
+    width: 100%;
+    height: 101px;
+    overflow: hidden;
+    background: #ffffff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card.people .card-info .title {
+    display: block;
+    margin: 8px 14px 0 14px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #404040;
+}
+
+.card.people .card-info .desc {
+    display: block;
+    margin: 8px 14px 0 14px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.card.people .card-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    line-height: 29px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(214, 224, 226, 0.2);
+}
+
+.card.hovercard .cardheader1 {
+    /*background: url("http://lorempixel.com/850/280/nature/4/");*/
+    background-size: cover;
+    height: 135px;
+    background: rgb(47, 90, 167);
+}
+
+.card.hovercard .avatar {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+}
+
+.card.hovercard .avatar img {
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.5);
+        display: -webkit-inline-box;
+}
+
+.card.hovercard .info {
+    padding: 4px 8px 10px;
+}
+
+.card.hovercard .info .title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+}
+
+.card.hovercard .info .desc {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.card.hovercard .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+.btn-primary {
+    border-color: rgb(66, 127, 237);
+}
+.btn, .form-control, .panel, .list-group, .well {
+    border-radius: 4px;
+    box-shadow: 0 0 0;
+}
+.btn-primary {
+    color: rgb(66, 127, 237);
+    background-color: rgba(0, 187, 255, 0);
+}
+
+    </style>
+
+
+<%- partial ('../partials/topbar.ejs') %>
+<input type="hidden" id="user_name" value="<%- name%>" >
+
+
+
+<div class="container small" id="gitlist-uhu">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="card hovercard">
+                <div class="cardheader">
+                </div>
+                <div class="avatar">
+    <img align=""  src="<%- user.picture%>" alt="gitlist user profile images"/>
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="">                
+                            <h1 id="username"><%- user.username%></h1>
+                        </a>
+                    </div>
+                    <div class="desc">                    
+                        <p id="user-small-description"><%- user.job%></p>
+                    </div>
+                    <div class="desc">                    
+                        <a id="user-site" target="_blank" href="<%- user.website%>"><%- user.website%></a> 
+                    </div>
+                </div>
+                <div class="bottom">
+         
+                    <a class="btn btn-warning btn-sm" rel="publisher" id="gitlist-follow-button-top">
+                       <i class="fa fa-plus"></i> Follow
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="gitlist-profile">
+
+ 
+    <div class="gitlist-profile-text">
+        <!--/*col-md-offset-0 col-md-8 col-lg-offset-0 col-lg-6*/ -->
+        <div class="">
+         <!--   <div class="well profile"> --> 
+                <!-- USER IMAGE PROFILE INFORMATION :) --> 
+                <!-- USERNAME --> 
+               <!-- <h1 id="username"><%- user.username%></h1> --> 
+                <!-- user descriptions and <p> --> 
+              <!--  <div class="gitlist-user-small-description-profile-site">
+                    <p id="user-small-description"><%- user.job%></p>
+                </div>  --> 
+                <!-- INCLUDE LINKS TO THE PROFILE  -->
+              <!--  <div class="gitlist-user-small-description-profile-site-link">
+                    <a id="user-site" href="<%- user.website%>"><%- user.website%></a> 
+                </div> --> 
+                <!-- USER PROFILE FOLLOW AND FOLLOWING COUNTER  -->
+                <div class="col-sm-12">
+                    <div class="col-xs-12 col-sm-8"></div>           
+                </div>
+                <div class="col-xs-12 divider text-center" id="gitlist-follower-folloing-section">
+                    <div class="col-xs-12 col-sm-4">
+                        <h2 id="followers"><strong><%- user.followers%></strong></h2>                    
+                        <p><a href="/<%- user.slug%>/followers"><small>Followers</small></a></p>                        
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <h2 id="following"><strong><%- user.following%></strong></h2>                    
+                        <p><a href="/<%- user.slug%>/following"><small>Following</small></a></p>                       
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <h2 id="gitlists"><strong>0</strong></h2>                    
+                        <p><small>+gitlist</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>                 
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+<section id="gitlist-t-cards">
+    <div class="container">
+        <div class="row">
+            <% if(following.length > 0) { %>
+                <% for(var i = 0; i < following.length; i++) { %>
+                       <div class="col-lg-3 col-sm-6">
+            <div class="card hovercard">
+                <div class="cardheader1">
+
+                </div>
+                <div class="avatar">
+                                <img class="img-responsive img-circle" src="<%- following[i].picture%>" />
+                </div>
+                <div class="info">
+                    <div class="title">
+                                <h4 class="panel-header"><a href="/<%- following[i].slug%>">@<%- following[i].username%></a></h4>
+
+                    </div>
+                    <div class="desc"> <small><%- following[i].job%></small></div>
+                  
+                </div>
+                <div class="bottom">
+                    <button class="btn btn-primary btn-sm" role="button">Follow</button>
+
+            
+                </div>
+            </div>
+    </div>
+                <% } %>
+            <% } %> 
+        </div>
+    </div>
+</section>
+
+
+<!-- /gitlist-sectionspace-rest-part-1 --> 
+<section id="gitlist-sectionspace-rest-part-1">
+    <div class="container">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2>Start your Free Gitlist Today!
+            </h2><br>
+    <p class="text-center">
+    <a href="../g/login" class="btn btn-success btn-outline-rounded green"> start using gitlist<i class="fa fa-paper-plane" style="margin-left:10px;"></i></a>
+        </p>              
+    </div>
+    </div>
+</section>
+
+
+
+<script type="text/javascript">
+    $.notify.addStyle('confirm', {
+        html: "<div><span data-notify-text/><span>&nbsp;&nbsp;Please click <a href='/g/login'>here</a> to login!</span></div>",
+    });
+
+    //-- Follow button click Event. ---
+    $("#gitlist-follow-button-top").click(function(){
+        $.post(
+            '/login',
+            {},
+            function (res) {
+                var user = res.user;
+                if(!user){
+                    $.notify("You must login before follow user.", {style: 'confirm', className: "success", autoHide: false, clickToHide: false});
+                }else{
+                    var loggedUser = res.user.username;
+                    var username = $("#user_name").val();
+                    
+                    if(username == loggedUser){
+                        $.notify("The User can not follow himself!", "error");
+                    }else{
+                        $.post(
+                            '/updateFollow',
+                            {username: username, loggedUser: loggedUser},
+                            function (res) {
+                                if(res.message == "Already followed!"){
+                                    $.notify("You've already followed this user.", "error");  
+                                }else{
+                                    $("#followers strong").text(res.user.following);                                
+                                }
+                            }
+                        );   
+                    }
+                }
+            }
+        ).fail(function(res){
+            window.location = "/g/login";
+        });
+    });
+
+    var authorId = '';
+    //-- Current User's Git list ---
+    $.ajax({
+        url: '/getUserByName',
+        type: 'POST',
+        data: {username: username},
+        async:false,
+        success: function(res){     
+            authorId = res.id;
+        }
+    });
+
+    $.ajax({
+        url: '/getGitsByAuthor',
+        type: 'POST',
+        data: {authorId: authorId},
+        async:false,
+        success: function(res){     
+            var git_count = res.length;
+            $("#gitlists strong").text(git_count);
+        }
+    });
+</script>
+<style>
+    .notifyjs-confirm-base {
+        font-weight: bold;
+        padding: 8px 15px 8px 14px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        background-color: #fcf8e3;
+        border: 1px solid #fbeed5;
+        border-radius: 4px;
+        white-space: nowrap;
+        padding-left: 25px;
+        background-repeat: no-repeat;
+        background-position: 3px 7px;
+    }
+    .notifyjs-confirm-success {
+        color: #468847;
+        background-color: #DFF0D8;
+        border-color: #D6E9C6;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+    }
+</style>

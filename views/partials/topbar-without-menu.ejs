@@ -1,0 +1,221 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <a class="close-canvas-menu"><i class="fa fa-times"></i></a>
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+ <!-- When user is loged in --> <% if(username != "") { %> 
+                <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" id="userImage" style="width: 60px;" src="<%- picture %>" />
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> 
+                              <strong class="font-bold">
+                              <a href="/<%- slug %>">                
+                            <h8 id="username"><%- user.username%> </h8>
+                        </a></strong>
+                      </span> 
+                      <span class="text-muted text-xs block"><%- user.job%><b class="caret"></b></span></span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="mailbox.html">Mailbox</a></li>
+                            <li class="divider"></li>
+                            <li><a href="login.html">Logout</a></li>
+                        </ul>
+                    </div>
+  <!-- end when user is logged in --> <% } %>
+                    <div class="logo-element">
+                      Gitlist+
+                    </div>
+                </li>
+<!-- when user is logged in --> <% if(username != "") { %> 
+                <li>
+                    <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Profile </span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+
+                        <li>
+                            <a href="#">Account <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="/g/settings">Settings</a>
+                                </li>
+                                <li>
+                                    <a href="/g/account">Password</a>
+                                </li>
+                            </ul>
+                        </li>
+                            <li>
+                                <a href="/<%- slug %>"> + Your Gitlist</a>
+                          </li>                       
+                    </ul>
+                </li>
+  <!-- end when user is logged in --> <% } %>
+                <li>
+                    <a href="localhost">
+                      <i class="fa fa-magic"></i> 
+                      <span class="nav-label">Gitlist</span>
+                      <span class="label label-info pull-right">62</span>
+                    </a>
+                </li>
+                  <li>
+                    <a href="/g/add">
+                      <i class="fa fa-magic"></i> 
+                      <span class="nav-label">Add Git +</span>
+                      <span class="label label-info pull-right"></span>
+                    </a>
+                </li>
+                  <li>
+                    <a href="">
+                      <i class="fa fa-magic"></i> 
+                      <span class="nav-label">Git</span>
+                      <span class="label label-info pull-right"></span>
+                    </a>
+                </li>
+        <!-- when user is logged in --> <% if(username != "") { %> 
+                  <li>
+                    <a href="/logout">
+                      <i class="fa fa-magic"></i> 
+                      <span class="nav-label">Log Out</span>
+                      <span class="label label-info pull-right"></span>
+                    </a>
+                </li>
+  <!-- end when user is logged in --> <% } %>
+                <li class="landing_link">
+                    <a target="_blank" href="http://www.gitlist.io/g/launching">
+                      <i class="fa fa-star"></i> 
+                      <span class="nav-label">Start Using Gitlist OS </span>
+                       <span class="label label-warning pull-right">NEW</span>
+                     </a>
+                </li>
+            </ul>
+        </div>
+    </nav> 
+
+<!-- Navbar for sidebox --> 
+<nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+<div class="navbar-header">
+            <a class="navbar-brand-gitlist" href="/"><img src="../images/gl-logo-1.png" id="gitlist-logo"></a>
+                  <a class="navbar-minimalize minimalize-styl-2 btn btn-primary pull-right" href="#"><i class="fa fa-bars"></i> </a>
+            <!--
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form> --> 
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+        <!-- when user is logged in --> <% if(username != "") { %> 
+                    <li><a href="/<%- slug %>">                
+                            <h8 id="username"><%- user.username%></h8>
+                        </a></li>
+                      <img id="userImage" src="<%- picture %>" style="width:30px;height:30px;" class="img-circle special-img"> </a>
+<!-- else happend when that thing show up when user is logged in or not --> <% } else { %>
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to Gitlist+</span>
+                </li>
+  <!-- end when user is logged in --> <% } %>
+        <!-- when user is logged in --> <% if(username != "") { %> 
+              <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                </a>
+                                <div class="media-body">
+                                    <small class="pull-right">46h ago</small>
+                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right text-navy">5h ago</small>
+                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right">23h ago</small>
+                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="mailbox.html">
+                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="off_canvas_menu.html#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="mailbox.html">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="profile.html">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="grid_options.html">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="notifications.html">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+   <!-- end when user is logged in --> <% } %>
+        <!-- when user is logged in --> <% if(username != "") { %> 
+                <!-- user icon to user profile  <li id="gl-respon-23"><a id="user_profile" href="/<%- slug %>" class="gl-respon-23"><i class="fa fa-user"></i></a></li> --> 
+                  <li><a href="/logout" class="logout-btn btn btn-gitlist-sign-up-black-front" id="color-blue">Log Out</a></li>
+              <% } else { %>
+                  <li><a href="/g/login" class="login-btn btn btn-gitlist-sign-up-black-front" id="color-blue">Sign IN</a></li>
+              <% } %>   
+            </ul>
+        </nav> 

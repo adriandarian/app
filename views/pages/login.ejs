@@ -1,0 +1,156 @@
+<script src="/js/notify.js"></script>
+
+
+<!--
+<div class="navbar navbar-fixed-top header" id="gitlist-col-top" style="background:none;border:none;">
+  <div class="col-md-12">
+    <div class="navbar-header">
+             <a class="navbar-brand" href="/" style="color: rgba(206, 206, 206, 0.9)"> 
+<i class="fa fa-sort-amount-desc" id="gitlist-logo-landing" style="color: rgba(206, 206, 206, 0.9)"></i>
+           </a> 
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+<i class="fa fa-bars"></i>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse"  id="navbar-collapse1 gitlist-col-top" style="background:none;">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/" class="gitlist-links-at-landing-page" style="color:white;"><i class="fa fa-arrow-circle-o-left"></i> Back to Gitlist</a></li>
+          <li><a href="/g/signup"  id="color-blue-376247536532" class="btn btn-gitlist-sign-up 543456345idatlogin-gl-1">Sign Up</a></li>
+      </ul>
+    </div>  
+  </div> 
+</div>
+
+ 
+
+-->
+   <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">gl+</h1>
+            </div>
+            <h3>Welcome to gl+</h3>
+            <p>Sign In and List your Gits Today. 
+            </p>
+            <p>Login in to your Account.</p>
+
+<br>
+<a href="/auth/facebook">Sign in with Facebook</a>
+<br>
+
+
+            <div class="m-t">
+
+            <input type="email" id="loginEmail" name="email"  class="form-control login-input" placeholder="your@yourmail.io" required="off" autofocus="off">
+            <br>
+            <input id="loginPassword"  name="password" type="password"  class="form-control login-input" placeholder="Password">
+
+            <label class="checkbox" style="color: rgba(206, 206, 206, 0.9)">
+            <input id="terms" name="terms" type="checkbox" value="1" checked="" style="color: rgba(206, 206, 206, 0.9)"> Remember Me
+            </label>
+
+              <input type="text" id="fakeinput" name="fakeinput" value="" class="hidden">  
+              <button class="loginBtn btn btn-lg btn-primary btn-block"  id="color-blue"> <i class="fa fa-sign-in"></i> LOG IN</button>
+
+                <a href="/g/forgot"><small>Forgot password?</small></a>
+                <p class="text-muted text-center"><small>Do not have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="/g/signup" id="underline">Create an account</a>
+            </div>
+        </div>
+    </div>
+
+
+  <script type="text/javascript">
+  function check_values() {
+    if ($("#username").val().length != 0 && $("#password").val().length != 0) {
+        $("#button1").removeClass("hidden").animate({ left: '250px' });;
+        $("#lock1").addClass("hidden").animate({ left: '250px' });;
+    }
+}
+
+  </script>   
+
+<script type="text/javascript">
+ 
+  // Enter key press
+  $("#loginPassword").keyup(function(e){
+      if(e.which == 13){
+        var email = $("#loginEmail").val();
+        var password = $("#loginPassword").val();
+        if (email && password) {
+            $.post(
+                '/login',
+                {email: email, password:password},
+                function (res) {
+                    var message = res.message;               
+                    if (message != "Invalid Password" && message != "Incorrect email."){
+                      window.location = "/";
+                    }
+                    else{
+                      $.notify("Invalid Email and Password", "error");
+                    }
+                }
+            ).fail(function(res){
+                $.notify("Error!", "error");
+            });
+        } else {
+            $.notify("A username and password is required", "error");
+        }      
+      }
+  });
+
+  // Login button click
+  $(".loginBtn").click(function(){
+    var email = $("#loginEmail").val();
+    var password = $("#loginPassword").val();
+    if (email && password) {
+        $.post(
+            '/login',
+            {email: email, password:password},
+            function (res) {
+                var message = res.message;               
+                if (message != "Invalid Password" && message != "Incorrect email."){
+                  window.location = "/";
+                }
+                else{
+                  $.notify("Invalid Email and Password", "error");
+                }
+            }
+        ).fail(function(res){
+            $.notify("Error!", "error");
+        });
+    } else {
+        $.notify("A username and password is required", "error");
+    }
+  });
+</script> 
+
+<script>
+ if ($.browser.webkit) {
+    $('input[name="password"]').attr('autocomplete', 'off');
+        $('input:-webkit-autofill"]').attr('autocomplete', 'off');
+
+}
+</script>
+
+
+
+
+
+
+<script>
+if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0) {
+  $(window).load(function(){
+    $('input:-webkit-autofill').each(function(){
+      var text = $(this).val();
+      var name = $(this).attr('name');
+      $(this).after(this.outerHTML).remove();
+      $('input[name=' + name + ']').val(text);
+    });
+  });
+}
+
+
+</script>
+
+

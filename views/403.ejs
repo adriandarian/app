@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+
+
+       444444444       000000000      333333333333333
+      4::::::::4     00:::::::::00   3:::::::::::::::33
+     4:::::::::4   00:::::::::::::00 3::::::33333::::::3
+    4::::44::::4  0:::::::000:::::::03333333     3:::::3
+   4::::4 4::::4  0::::::0   0::::::0            3:::::3
+  4::::4  4::::4  0:::::0     0:::::0            3:::::3
+ 4::::4   4::::4  0:::::0     0:::::0    33333333:::::3
+4::::444444::::4440:::::0 000 0:::::0    3:::::::::::3
+4::::::::::::::::40:::::0 000 0:::::0    33333333:::::3
+4444444444:::::4440:::::0     0:::::0            3:::::3
+          4::::4  0:::::0     0:::::0            3:::::3
+          4::::4  0::::::0   0::::::0            3:::::3
+          4::::4  0:::::::000:::::::03333333     3:::::3
+        44::::::44 00:::::::::::::00 3::::::33333::::::3
+        4::::::::4   00:::::::::00   3:::::::::::::::33
+        4444444444     000000000      333333333333333
+
+
+
+  This is the default "403: Forbidden" page.
+  User agents that don't "Accept" HTML will see a JSON version instead.
+  You can customize the control logic for your needs in `config/403.js`
+
+  You can trigger this response from one of your controllers or policies with:
+  `return res.forbidden( msg );`
+  (where `msg` is an optional error message to include in the response)
+
+
+
+
+-->
+<html>
+  <head>
+    <title>Page Not Found</title>
+         <title>Gitlist</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+       <link href="assets/css/bootstrap.min.css-gitlist-6347216-main.css" rel="stylesheet"type="text/css">
+       <link href="assets/css/style-gitlist-front.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .error-template {padding: 230px 15px;text-align: center;}
+    .error-template h1 {font-size: 50px;font-weight:600;color:black;}
+    .error-actions {margin-top:15px;margin-bottom:15px;}
+    .error-actions .btn { margin-right:10px; }
+
+    span.glyphicon.glyphicon-home {
+      color: white;
+      }
+    </style>
+  </head>
+  <body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+              <img src="../images/white_icon_gitlist.png" style="height:46px;width:46px;margin-top: -6px;" class="" alt="avatar">
+            <!--    <h1>
+                    Oops!</h1> -->
+                <h2>
+                    404 - Git Not Found</h2>
+                <div class="error-details">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+                <div class="error-actions">
+                    <a href="/" class="btn btn-primary btn-lg" id="color-blue"><i class="fa fa-home"></i>  Gitlist </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  </body>
+</html>

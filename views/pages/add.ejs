@@ -1,0 +1,122 @@
+<%- partial ('../partials/topbar-without-menu.ejs') %>
+
+<section id="gitlist-sectionspace-add-gitlist" class="pad-section">
+    <div class="container addgitlist" id="gitlist-container">
+        <div class="row">
+            <h2 class="page-header-addgitlist">Submit a New Git</h2><br>
+            <p class="page-p-addgitlist">Add your Git and Share it with other Developers.</p>
+            <br>
+            <div class="form-signin" data-ember-action="2">
+                <small class="text-muted" style="color:#666;">Already a Member? SignIn to <a href="../g/login" id="underline">Gitlist</a></small>
+                <br><br>
+                <% if(username != "") { %>
+                    <input id="name" class="gl-view gl-text-field form-control login-input" placeholder="Add a New Git" type="text"><br>
+                    <input id="url" class="gl-view gl-text-field form-control login-input" placeholder="https://" type="text"><br>
+                    <input id="title" class="gl-view gl-text-field form-control login-input" placeholder="Git Title" type="text"><br>
+                    <input id="description" class="gl-view gl-text-field form-control login-input-pass" placeholder="Description" type="text"><br>
+                    <input id="hashtags" class="gl-view gl-text-field form-control login-input-hash" placeholder="#hashtags z.B. Node.js" type="text"><br>
+                    <label class="checkbox">
+                        <input type="checkbox" id="terms" value="1">by clicking the button agreeing our terms of service.
+                    </label>
+                    <script id="metamorph-22-start" type="text/x-placeholder"></script>
+                    <script id="metamorph-22-end" type="text/x-placeholder"></script>
+                    <button class="submit-git-button btn btn-lg btn-primary btn-block btn-center" data-bindattr-3="3" id="color-blue">Submit Git</button><br>
+                <% }else { %>
+                    <input id="name" class="gl-view gl-text-field form-control login-input" placeholder="Add a New Git" type="text" disabled><br>
+                    <input id="url" class="gl-view gl-text-field form-control login-input" placeholder="https://" type="text" disabled><br>
+                    <input id="title" class="gl-view gl-text-field form-control login-input" placeholder="Git Title" type="text" disabled><br>
+                    <input id="description" class="gl-view gl-text-field form-control login-input-pass" placeholder="Description" type="text" disabled><br>
+                    <input id="hashtags" class="gl-view gl-text-field form-control login-input-hash" placeholder="#hashtags z.B. Node.js" type="text" disabled><br>
+                    <label class="checkbox">
+                        <input type="checkbox" id="terms" value="1" disabled>by clicking the button agreeing our terms of service.
+                    </label>
+                    <script id="metamorph-22-start" type="text/x-placeholder"></script>
+                    <script id="metamorph-22-end" type="text/x-placeholder"></script>
+                    <button class="submit-git-button btn btn-lg btn-primary btn-block btn-center" data-bindattr-3="3" id="color-blue" disabled>Submit Git</button><br>
+                <% } %>
+            </div>
+        </div> 
+    </div>
+</section>
+<style>button#color-blue {
+    color: rgb(66, 127, 237);
+    background-color: rgba(65,131,196,0);
+    border-color: rgb(66, 127, 237);
+    letter-spacing: 0;
+    font-weight: 800;
+}</style> 
+
+<script type="text/javascript">
+    $.notify.addStyle('confirm', {
+        html: "<div><span data-notify-text/><span><br>&nbsp;&nbsp;Please click <a href='/g/login'>here</a> to login!</span></div>",
+    });
+
+    //-- Check User logged in -- 
+    $.post(
+        '/login',
+        {},
+        function (res) {
+            if(!res.user){
+                $.notify("You must login or signup before add a git!", {style: 'confirm', className: "success", autoHide: false, clickToHide: false});
+            }
+        }
+    ).fail(function(res){
+        $.notify("Error!", "error");
+    });
+
+    $(".submit-git-button").click(function(){
+        var name = $("#name").val();
+        var url = $("#url").val();
+        var title = $("#title").val();
+        var description = $("#description").val();
+        var hashtags = $("#hashtags").val();      
+
+        if ($("#terms").is(":checked"))
+        {
+            var terms = $("#terms").val();
+
+            if (name && url && title && description && hashtags && terms) {
+                $.post(
+                    '/add',
+                    {name: name, url: url, title: title, description: description, hashtags: hashtags, terms: terms},
+                    function () {
+                      window.location = "/";
+                    }
+                ).fail(function(res){
+                    $.notify("You've already added this git!", "error");
+                });
+            } else {
+                $.notify("Git Informations are required.", "warn");
+            }
+        }else{
+            $.notify("Please check and agree our terms of service.", "warn");
+        }    
+    });
+</script> 
+<style>
+
+.notifyjs-corner {
+    position: fixed;
+    margin: 5px;
+    z-index: 1050;
+    margin-top: 60px;
+}
+    .notifyjs-confirm-base {
+        font-weight: bold;
+        padding: 8px 15px 8px 14px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        background-color: #fcf8e3;
+        border: 1px solid #fbeed5;
+        border-radius: 4px;
+        white-space: nowrap;
+        padding-left: 25px;
+        background-repeat: no-repeat;
+        background-position: 3px 7px;
+    }
+    .notifyjs-confirm-success {
+        color: #468847;
+        background-color: #DFF0D8;
+        border-color: #D6E9C6;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAutJREFUeNq0lctPE0Ecx38zu/RFS1EryqtgJFA08YCiMZIAQQ4eRG8eDGdPJiYeTIwHTfwPiAcvXIwXLwoXPaDxkWgQ6islKlJLSQWLUraPLTv7Gme32zoF9KSTfLO7v53vZ3d/M7/fIth+IO6INt2jjoA7bjHCJoAlzCRw59YwHYjBnfMPqAKWQYKjGkfCJqAF0xwZjipQtA3MxeSG87VhOOYegVrUCy7UZM9S6TLIdAamySTclZdYhFhRHloGYg7mgZv1Zzztvgud7V1tbQ2twYA34LJmF4p5dXF1KTufnE+SxeJtuCZNsLDCQU0+RyKTF27Unw101l8e6hns3u0PBalORVVVkcaEKBJDgV3+cGM4tKKmI+ohlIGnygKX00rSBfszz/n2uXv81wd6+rt1orsZCHRdr1Imk2F2Kob3hutSxW8thsd8AXNaln9D7CTfA6O+0UgkMuwVvEFFUbbAcrkcTA8+AtOk8E6KiQiDmMFSDqZItAzEVQviRkdDdaFgPp8HSZKAEAL5Qh7Sq2lIJBJwv2scUqkUnKoZgNhcDKhKg5aH+1IkcouCAdFGAQsuWZYhOjwFHQ96oagWgRoUov1T9kRBEODAwxM2QtEUl+Wp+Ln9VRo6BcMw4ErHRYjH4/B26AlQoQQTRdHWwcd9AH57+UAXddvDD37DmrBBV34WfqiXPl61g+vr6xA9zsGeM9gOdsNXkgpEtTwVvwOklXLKm6+/p5ezwk4B+j6droBs2CsGa/gNs6RIxazl4Tc25mpTgw/apPR1LYlNRFAzgsOxkyXYLIM1V8NMwyAkJSctD1eGVKiq5wWjSPdjmeTkiKvVW4f2YPHWl3GAVq6ymcyCTgovM3FzyRiDe2TaKcEKsLpJvNHjZgPNqEtyi6mZIm4SRFyLMUsONSSdkPeFtY1n0mczoY3BHTLhwPRy9/lzcziCw9ACI+yql0VLzcGAZbYSM5CCSZg1/9oc/nn7+i8N9p/8An4JMADxhH+xHfuiKwAAAABJRU5ErkJggg==);
+    }
+</style>

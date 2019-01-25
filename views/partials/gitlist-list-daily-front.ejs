@@ -1,0 +1,129 @@
+<div class="container small" id="gitlist-container">
+    <div class="row">
+        <div class="col-sm-12">
+          <!--  <h3>Daily Gits</h3> --> 
+            <div id="gitlist-daily">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+      var oneDay = 24*60*60*1000;
+      var oneHour = 60*60*1000;
+      var oneMinute = 60*1000;
+      var git_list = "";
+
+      $.post(
+          '/getGits',
+          {},
+          function (res) {     
+            for(var i = 0; i < res.length; i++){
+              var year = res[i].createdAt.substring(0, 4);
+              var month = res[i].createdAt.substring(5, 7);
+              var date = res[i].createdAt.substring(8, 10);
+
+              if(year == yyyy && month == mm && date == dd){                 
+                  var mydate = new Date(res[i].createdAt);
+                  var diffDays = Math.round(Math.abs((today.getTime() - mydate.getTime())/(oneDay)));
+                  var diffHours = Math.round(Math.abs((today.getTime() - mydate.getTime())/(oneHour)));
+                  var diffMins = Math.round(Math.abs((today.getTime() - mydate.getTime())/(oneMinute)));
+                  var diff = '';
+                  
+                  if(diffDays != 0)
+                    diff = diffDays + " days ago";
+                  else if(diffHours != 0)
+                    diff = diffHours + " hours ago";
+                  else
+                    diff = diffMins + " minutes ago";
+
+                  var username = res[i].author.username;
+                  var slug = username.replace(/\s+/g,'-').toLowerCase();
+                  var hashtags = res[i].hashtags;
+                  var tagsAry = hashtags.split(",");
+                  var email = res[i].author.email;
+                  var picture = res[i].author.picture;
+                  var comment_count = res[i].comments.length;
+                  var vote_count = 0;
+
+                  if(!res[i].votes)
+                      vote_count = 0;
+                  else{
+                      vote_count = res[i].votes;
+                  }
+
+                  git_list += "<div class='gitlist-media ' data-liststory='liststory_' id='"+res[i].id+"'>";
+                  git_list += "<div class='gitlist-center'>";
+                  git_list += "<div class='gitlist-vote'>";
+                  git_list += "<div class='gitlistvote_buttons '>";
+                  git_list += "<a><i class='fa fa-sort-asc'></i><em class='votes vote_count'>"+vote_count+"</em></a>";
+                  git_list += "</div>";
+                  git_list += "</div>";
+                  git_list += "<div class='gitlist-image'>";
+                  git_list += "<a class='' href='/"+slug+"'>";
+                  git_list += "<img alt='images-profile' src='"+ picture +"'>";
+                  git_list += "</a>";
+                  git_list += "</div>";
+                  git_list += "<div class='gitlistmedia-body'>";
+                  git_list += "<h4 class='gitlistmedia-heading'>";
+                  git_list += "<a class='git-title' href='/git/"+ res[i].slug +"'>"+res[i].title+"</a>";
+                  git_list += "<a class='lang' data-toggle='tooltip' href='#' title='' data-original-title='Language'>en</a>";
+                  git_list += "<a class='gitdomain' href='#'>gitlist.io</a>";
+                  git_list += "</h4>";
+                  git_list += "<div class='sub-detail'>";
+                  git_list += "<span class='timestamp'>"+diff+" by </span>";
+                  git_list += "<span class='verify_badge' data-placement='bottom' data-toggle='tooltip' title='' data-original-title='Verified Traveler'><i class='icon-ok-sign'></i></span> ";
+                  git_list += "<a class='owner' href='/"+slug+"'>"+username+"</a>";
+                  git_list += "<span class='tags'>";
+
+                  for(var j = 0; j < tagsAry.length; j++){
+                    var hash_first = tagsAry[j].replace(/\s+/g, '').substr(0,1);                    
+                    if(hash_first == "#"){
+                      git_list += "<a href='/"+tagsAry[j].replace(/\s+/g, '')+"'>"+tagsAry[j].replace(/\s+/g, '')+"</a>";
+                    }
+                    else{
+                      git_list += "<a href='/#"+tagsAry[j].replace(/\s+/g, '')+"'>#"+tagsAry[j].replace(/\s+/g, '')+"</a>";
+                    }
+                  }
+
+                  git_list += "</span>";
+                  git_list += "</div>";
+                  git_list += "</div>";
+                  git_list += "<div class='right-options'>";
+                  git_list += "<div class='buttons dropdown'>";
+                  git_list += "<a class='comment-count loading' data-remote='true' href='/git/"+ res[i].slug +"'><i class='fa fa-comments'></i> <span>"+comment_count+"</span></a>";
+                  git_list += "</div>";
+                  git_list += "</div>";
+                  git_list += "</div>";
+                  git_list += "</div>";
+              }             
+            }            
+          $("#gitlist-daily").html(git_list);
+
+          $("#gitlist-daily .gitlistvote_buttons").click(function(){
+              var id = $(this).closest(".gitlist-media").attr('id');
+              var thisObj = $(this);
+
+              $.ajax({
+                  url: '/addVote',
+                  type: 'POST',
+                  data: {postId: id},
+                  async: false,   
+                  success: function(res){
+                      var vote_count = res.votes;
+                      $("#"+id).find(".vote_count").text(vote_count);
+                      $("#gitlist-monthly #"+id).find(".vote_count").text(vote_count);
+                      $("#gitlist-weekly #"+id).find(".vote_count").text(vote_count);
+                  }
+              });
+          });
+        }
+      ).fail(function(res){
+          $.notify("Error!", "error");
+      });      
+    });
+</script>
